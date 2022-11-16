@@ -8,6 +8,16 @@ class HomePage1 extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage1> {
+  List<String> profileImages = [
+    'assets/images/photo1.jpg',
+    'assets/images/photo2.jpg',
+    'assets/images/photo3.jpg',
+    'assets/images/photo4.jpg',
+    'assets/images/photo5.jpg',
+    'assets/images/photo6.jpg',
+    'assets/images/photo7.jpg',
+    'assets/images/photo8.jpg',
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,8 +46,40 @@ class _HomePageState extends State<HomePage1> {
           //STORY
           SingleChildScrollView(
             scrollDirection: Axis.horizontal,
-            child: Row(),
-          )
+            child: Row(
+              children: List.generate(
+                  8,
+                  (index) => Container(
+                        padding: const EdgeInsets.all(10),
+                        child: Column(
+                          children: [
+                            CircleAvatar(
+                              radius: 35,
+                              backgroundImage:
+                                  const AssetImage('assets/images/story.jpg'),
+                              child: CircleAvatar(
+                                radius: 33,
+                                backgroundImage: AssetImage(
+                                  profileImages[index],
+                                ),
+                              ),
+                            ),
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            const Text(
+                              "Profile Name",
+                              style: TextStyle(
+                                fontSize: 12,
+                                color: Colors.black87,
+                              ),
+                            )
+                          ],
+                        ),
+                      )),
+            ),
+          ),
+          const Divider()
         ]),
       ),
     );
